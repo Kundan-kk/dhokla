@@ -1,0 +1,76 @@
+{% include 'base.html' %}
+{% load static %}
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-md sticky-top bg-primary float-none">
+        <div class="container-fluid"><img src="{% static 'img/mainicon.png' %}" width="30px" height="30px" alt="10px"><a class="navbar-brand text-center" href="#" style="margin: 0px 0px;">HOSPITAL SYSTEM</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav text-light ml-auto">
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li> <a href="{% url 'home' %}" >Home</a></li>
+                <li> <a href="{% url 'profile' %}" style="color: white;">Profile</a></li>
+                <li> <a href="{% url 'viewappointments' %}">View Appointments</a></li>
+                <li> <a href="#">Add Prescription</a></li>
+                <li> <a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                <div class="row register-form">
+                    <div class="col-md-8 offset-md-2">
+                        {% for d in doctor_details %}
+                        <form class="custom-form" style="margin-top: 0px;">
+                            <h1>Your Profile</h1>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="name">Name </label></div>
+                                <div class="col-sm-6 input-column"><input class="form-control" type="text" id="name" readonly="" value="{{ d.name }}"></div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="email">Email </label></div>
+                                <div class="col-sm-6 input-column"><input class="form-control" type="text" id="email" readonly="" value="{{ d.email }}"></div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="gender">Gender</label></div>
+                                <div class="col-sm-6 input-column"><input class="form-control" type="text" id="gender" readonly="" value="{{ d.gender}}"></div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pn">Phone Number</label></div>
+                                <div class="col-sm-6 input-column"><input class="form-control" type="text" id="pn" readonly="" value="{{ d.phonenumber}}"></div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="address">Address</label></div>
+                                <div class="col-sm-6 input-column"><textarea class="form-control" id="address" readonly="" >{{ d.address}}</textarea></div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="Bday">Birth Date</label></div>
+                                <div class="col-sm-6 input-column"><input class="form-control" type="text" id="Bday" readonly="" value="{{ d.birthdate }}"></div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="BG">Blood Group</label></div>
+                                <div class="col-sm-6 input-column"><input class="form-control" type="text" id="BG" readonly="" value="{{ d.bloodgroup }}"></div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="specialization">Specialization </label></div>
+                                <div class="col-sm-6 input-column"><input class="form-control" type="text" id="specialization" readonly="" value="{{ d.specialization }}"></div>
+                            </div>
+
+                        </form>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

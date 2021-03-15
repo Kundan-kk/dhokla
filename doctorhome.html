@@ -1,0 +1,50 @@
+{% include 'base.html' %}
+{% load static %}
+<body>
+    <nav class="navbar navbar-dark navbar-expand-md sticky-top bg-primary float-none">
+        <div class="container-fluid"><img src="{% static 'img/mainicon.png' %}" width="30px" height="30px" alt="10px"><a class="navbar-brand text-center" href="#" style="margin: 0px 0px;">HOSPITAL SYSTEM</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav text-light ml-auto">
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li> <a href="{% url 'home' %}" style="color: white;">Home</a></li>
+                <li> <a href="{% url 'profile' %}">Profile</a></li>
+                <li> <a href="{% url 'viewappointments' %}">View Appointments</a></li>
+                <li> <a href="#">Add Prescription</a></li>
+                <li> <a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h1 class="text-center">You are sucessfully logged in..</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% ifequal error 'no' %}
+    <script type="text/javascript">
+        window.location('{% url 'home' %}')
+    </script>
+    {% endifequal %}
+    {% ifequal error 'yes' %}
+    <script type="text/javascript">
+        alert('Invaild credentials ...')
+        window.location('{% url 'loginpage' %}')
+    </script>
+    {% endifequal %}
+</body>
+
+</html>
